@@ -1,3 +1,4 @@
+import static java.lang.Math.*;
 
 public class Main {
 
@@ -26,7 +27,7 @@ public class Main {
         int max = 3;
         int min = -11;
         for(int i = 0; i < x.length; i++){
-            x[i] = (float) ((Math.random() * (max - min)) + min);
+            x[i] = (float) ((random() * (max - min)) + min);
         }
         return x;
     }
@@ -37,13 +38,13 @@ public class Main {
             for (int j = 0; j < x.length; j++){
                 float h = x[j];
                 if (a[i] == 21){
-                    ax[i][j] = (float) Math.tan(Math.pow(Math.pow((0.25 / (h + 0.5)), 3), ((1 - Math.asin((h - 4) / 14)) / 0.25)));
+                    ax[i][j] = (float) tan(pow(pow((0.25 / (h + 0.5)), 3), ((1 - asin((h - 4) / 14)) / 0.25)));
                 }
                 else if(a[i] == 3 | a[i] == 5 | a[i] == 13 | a[i] == 15 | a[i] == 19){
-                    ax[i][j] = (float) (2 * (Math.exp(Math.asin((h - 4) / 14)) - 0.5)) / 3;
+                    ax[i][j] = (float) (2 * (exp(asin((h - 4) / 14)) - 0.5)) / 3;
                 }
                 else{
-                    ax[i][j] = (float) Math.atan(Math.exp(Math.cbrt(-2 * Math.PI * Math.pow(Math.cos(h), 2))));
+                    ax[i][j] = (float) atan(exp(cbrt(-2 * PI * pow(cos(h), 2))));
                 }
             }
         }
