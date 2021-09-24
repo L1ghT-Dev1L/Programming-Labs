@@ -3,11 +3,12 @@ import static java.lang.Math.*;
 public class Main {
 
     public static void main(String[] args) {
-
+        final int firstCond = 21;
+        final int[] secondCond = {3, 5, 13, 15, 19};
         int [] a = task1();
         float [] x = task2();
-        float [][] ax = task3(a, x);
-        for(float[] row : ax){
+        float [][] ax = task3(a, x, firstCond, secondCond);
+        for(float[] row : ax) {
             printRow(row);
         }
     }
@@ -27,28 +28,48 @@ public class Main {
         int max = 3;
         int min = -11;
         for(int i = 0; i < x.length; i++){
-            x[i] = (float) ((random() * (max - min)) + min);
+            x[i] = rndNum(max, min);
         }
         return x;
     }
 
-    public static float[][] task3(int[] a, float[] x){
+    public static float[][] task3(int[] a, float[] x, int first_cond, int[] second_cond){
         float[][] ax = new float[11][20];
         for(int i = 0; i < a.length; i++){
             for (int j = 0; j < x.length; j++){
-                float h = x[j];
-                if (a[i] == 21){
-                    ax[i][j] = (float) tan(pow(pow((0.25 / (h + 0.5)), 3), ((1 - asin((h - 4) / 14)) / 0.25)));
+                if (a[i] == first_cond){
+                    ax[i][j] = first_form(x[j]);
                 }
-                else if(a[i] == 3 | a[i] == 5 | a[i] == 13 | a[i] == 15 | a[i] == 19){
-                    ax[i][j] = (float) (2 * (exp(asin((h - 4) / 14)) - 0.5)) / 3;
+                else if(contain(second_cond, a[i])){
+                    ax[i][j] = second_form(x[j]);
                 }
                 else{
-                    ax[i][j] = (float) atan(exp(cbrt(-2 * PI * pow(cos(h), 2))));
+                    ax[i][j] = third_form(x[j]);
                 }
             }
         }
         return ax;
+    }
+
+    public static float first_form(float x){
+        return (float) tan(pow(pow((0.25 / (x + 0.5)), 3), ((1 - asin((x - 4) / 14)) / 0.25)));
+    }
+
+    public static float second_form(float x){
+        return (float) (2 * (exp(asin((x - 4) / 14)) - 0.5)) / 3;
+    }
+
+    public static float third_form(float x){
+        return (float) atan(exp(cbrt(-2 * PI * pow(cos(x), 2))));
+    }
+
+    public static float rndNum(int max, int min){
+        return (float) ((random() * (max - min)) + min);
+    }
+
+    public static boolean contain(int[] arr, int n){
+        for(int i : arr) if(i == n) return true;
+        return false;
     }
 
     public static void printRow(float[] row){
