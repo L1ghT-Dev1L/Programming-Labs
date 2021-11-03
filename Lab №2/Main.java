@@ -2,7 +2,7 @@ import pokemons.*;
 import ru.ifmo.se.pokemon.*;
 
 public class Main {
-
+    
     public static void main(String[] args) {
         Battle b = new Battle();
         Pokemon p1 = new Eevee("Олег", 1);
@@ -17,8 +17,6 @@ public class Main {
         b.addFoe(p4);
         b.addFoe(p5);
         b.addFoe(p6);
-
         b.go();
     }
-
 }
