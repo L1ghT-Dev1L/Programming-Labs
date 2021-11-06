@@ -1,8 +1,11 @@
 package moves;
+
 import ru.ifmo.se.pokemon.*;
 
-public class Rest extends StatusMove{
-    public Rest() { super(Type.PSYCHIC, 0, 100); }
+public class Rest extends StatusMove {
+    public Rest() {
+        super(Type.PSYCHIC, 0, 100);
+    }
 
     @Override
     protected void applySelfEffects(Pokemon self) {
@@ -13,5 +16,7 @@ public class Rest extends StatusMove{
     }
 
     @Override
-    protected String describe() { return "использует Rest"; }
+    protected String describe() {
+        return "использует Rest";
+    }
 }
