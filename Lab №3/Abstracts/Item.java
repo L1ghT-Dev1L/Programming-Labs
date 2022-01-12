@@ -7,7 +7,7 @@ public abstract class Item {
 
     public Item(String name, int count) {
         this.name = name;
-        if (count < 1) {
+        if (count <= 0) {
             System.out.println("Неправильно установлено количество предмета. Оно не может быть меньше 1");
             this.count = 1;
         } else {
