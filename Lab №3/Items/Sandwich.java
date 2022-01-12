@@ -21,7 +21,7 @@ public class Sandwich extends Food {
     public String toString() {
         if (mainIngredient != null) {
             Ingredients mainIngredient = Enum.valueOf(Ingredients.class, this.mainIngredient.toString());
-            return String.format("%s с главным ингредиентом %s", super.getName().toLowerCase(), mainIngredient.getPref());
+            return String.format("%s с главным ингредиентом %s", super.getName().toLowerCase(), mainIngredient.getPreference());
         }
         return String.format("просто %s", super.getName().toLowerCase());
     }
