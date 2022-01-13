@@ -97,8 +97,8 @@ public class Kenga extends Animal implements Workable, Countable {
             }
             makeFood(hero, 2);
             System.out.printf("%s приготовила еду для %s. В рюкзак добавлен предмет %s. Теперь у %s их %d штук(и).\n",
-                    this.getName(), hero.getName(), hero.getItem(new Sandwich(1)).toString(),
-                    hero.getName(), hero.getItem(new Sandwich(1)).getCount());
+                    this.getName(), hero.getName(), hero.getItem(new Sandwich(1, hero.getPreference())).toString(),
+                    hero.getName(), hero.getItem(new Sandwich(1, hero.getPreference())).getCount());
         }
     }
 
