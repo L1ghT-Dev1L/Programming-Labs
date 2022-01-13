@@ -26,12 +26,12 @@ public class Main {
         } else {
             if (!(roo.readyToWalk())) {
                 System.out.printf("%s голоден, значит нужно перекусить.\n", roo.getName());
-                Sandwich food = (Sandwich) roo.getItem(new Sandwich(1));
+                Sandwich food = (Sandwich) roo.getItem(new Sandwich(1, roo.getPreference()));
                 roo.eat(food);
             }
             if (!(tigra.readyToWalk())) {
                 System.out.printf("%s голоден, значит нужно перекусить.\n", tigra.getName());
-                Sandwich food = (Sandwich) tigra.getItem(new Sandwich(1));
+                Sandwich food = (Sandwich) tigra.getItem(new Sandwich(1, tigra.getPreference()));
                 tigra.eat(food);
                 Napkin napkin = (Napkin) tigra.getItem(new Napkin(1));
                 tigra.usedItem(napkin);
