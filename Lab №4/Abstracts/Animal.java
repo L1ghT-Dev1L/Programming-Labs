@@ -101,26 +101,6 @@ public abstract class Animal {
         backpack.add(thing);
     }
 
-    public void addItem(String name, int count, String description) {
-
-        class BackpackItem extends Item {
-            private final String description;
-
-            BackpackItem(String name, int count, String description) {
-                super(name, count);
-                this.description = description;
-            }
-
-            String getDescription() {
-                return description;
-            }
-        }
-
-        BackpackItem newItem = new BackpackItem(name, count, description);
-        backpack.add(newItem);
-
-    }
-
     public Item getItem(int index) {
         return backpack.get(index);
     }
@@ -171,4 +151,5 @@ public abstract class Animal {
         return name.equals(other.name) && mood == other.mood
                 && preference == other.preference && hungry == other.hungry;
     }
+
 }
