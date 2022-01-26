@@ -8,4 +8,9 @@ public class Clothes extends Item {
         super("Одежда", count);
     }
 
+    @Override
+    public String toString() {
+        return super.getName();
+    }
+
 }
