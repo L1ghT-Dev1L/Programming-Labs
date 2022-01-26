@@ -19,7 +19,22 @@ public class Roo extends Animal implements Walkable {
 
     @Override
     public Item necessaryThing() {
-        return new Clothes(1);
+
+        class Apron extends Clothes {
+            private final String description;
+
+            Apron(int count, String description) {
+                super(count);
+                this.description = description;
+            }
+
+            @Override
+            public String toString() {
+                return description;
+            }
+        }
+
+        return new Apron(1, "передник Ру");
     }
 
     @Override

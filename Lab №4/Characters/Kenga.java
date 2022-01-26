@@ -112,7 +112,7 @@ public class Kenga extends Animal implements Workable {
                 thingToAdd.setCount(4);
                 hero.addItem(thingToAdd);
                 System.out.printf("У %s оказалось недостаточно предмета %s, поэтому %s начинает работать. ", hero.getName(),
-                        thingToAdd.getName().toLowerCase(), getName());
+                        thingToAdd.toString().toLowerCase(), getName());
 
                 Soup kengaSoup = (Soup) getItem(necessaryThing());
                 try {
