@@ -171,5 +171,4 @@ public abstract class Animal {
         return name.equals(other.name) && mood == other.mood
                 && preference == other.preference && hungry == other.hungry;
     }
-
 }
