@@ -5,41 +5,33 @@ import abstracts.Item;
 import exceptions.ImpossibleSituationException;
 import interfaces.Itemize;
 import interfaces.Walkable;
-import items.Napkin;
-import properties.Cleanness;
+import items.Clothes;
 import properties.Ingredients;
 import properties.Mood;
 import properties.Position;
 
-public class Tiger extends Animal implements Walkable {
+public class Roo extends Animal implements Walkable {
 
-    public Tiger(String name, Mood mood, Ingredients preference, boolean hungry) {
+    public Roo(String name, Mood mood, Ingredients preference, boolean hungry) {
         super(name, mood, preference, hungry);
     }
 
-    private void jump(Animal otherHero) {
-        this.setHeroPosition(Position.IN_AIR);
-        System.out.printf("%s подпрыгнул от радости, но при приземлении задел %s.\n", super.getName(), otherHero.getName());
-        this.setHeroPosition(Position.STAY);
-        otherHero.setHeroPosition(Position.FALL);
-        otherHero.ears.setStatus(Cleanness.DIRTY);
-    }
-
-    public void greeting(Animal otherHero) {
-        System.out.printf("%s поприветствовал %s.\n", super.getName(), otherHero.getName());
-        jump(otherHero);
-    }
-
     public Item getNecessaryItem() {
-        return new Napkin(1);
+        Item apron = new Clothes(1) {
+            @Override
+            public String toString() {
+                return String.format("Передник Ру");
+            }
+        };
+        return apron;
     }
 
     @Override
     public boolean haveEnoughItems() {
-        Item necessaryItem = new Napkin(1);
+        Item necessaryItem = new Clothes(1);
         if (this.getItem(necessaryItem) != null) {
             Item backpackItem = (Item) this.getItem(necessaryItem);
-            return backpackItem.getCount() > 3;
+            return backpackItem.getCount() > 2;
         }
         return false;
     }
@@ -56,5 +48,4 @@ public class Tiger extends Animal implements Walkable {
     public void walk() {
         System.out.printf("%s пошёл гулять.\n", super.getName());
     }
-
 }
