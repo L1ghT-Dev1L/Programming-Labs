@@ -1,31 +1,28 @@
-package Items;
+package items;
 
-import Abstracts.Food;
-import Properties.Ingredients;
+import abstracts.Food;
+import interfaces.Describable;
+import properties.Ingredients;
 
 import java.util.Objects;
 
 public class Sandwich extends Food {
 
-    private final Ingredients mainIngredient;
+    private final Describable mainIngredient;
 
-    public Sandwich(int count, Ingredients mainIngredient) {
+    public Sandwich(int count, Ingredients mainIngredient) throws NullPointerException {
         super("Бутерброд", count);
-        this.mainIngredient = mainIngredient;
-    }
-
-    public Sandwich(int count) {
-        super("Бутерброд", count);
-        mainIngredient = null;
+        if (mainIngredient != null) {
+            this.mainIngredient = mainIngredient;
+        }
+        else {
+            throw new NullPointerException("Main ingredient in sandwich can't be null");
+        }
     }
 
     @Override
     public String toString() {
-        if (mainIngredient != null) {
-            Ingredients mainIngredient = Enum.valueOf(Ingredients.class, this.mainIngredient.toString());
-            return String.format("%s с главным ингредиентом %s", super.getName().toLowerCase(), mainIngredient.getDescription());
-        }
-        return String.format("просто %s", super.getName().toLowerCase());
+        return String.format("%s с главным ингредиентом %s", super.getName(), mainIngredient.getDescription());
     }
 
     @Override
@@ -38,6 +35,6 @@ public class Sandwich extends Food {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), mainIngredient);
+        return Objects.hash(getName(), getCount(), mainIngredient);
     }
 }
