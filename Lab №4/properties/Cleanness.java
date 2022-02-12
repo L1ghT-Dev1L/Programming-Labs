@@ -1,6 +1,8 @@
-package Properties;
+package properties;
 
-public enum Cleanness {
+import interfaces.Describable;
+
+public enum Cleanness implements Describable {
     CLEAN("чистые"),
     DIRTY("грязные");
 
